@@ -24,9 +24,9 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#FFFFFF',
     strokeColor: '#6366F1',
     textColor: '#1E293B',
-    x: 80,
-    y: 30,
-    width: 1740,
+    x: 100,
+    y: 40,
+    width: 2340,
     height: 220,
     iconName: 'Layers',
     status: 'completed',
@@ -45,7 +45,7 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
   },
 
   // ----------------------------------------------------
-  // ROW 1 (Y = 200): 🟨 用户意图输入网关 (User Intent Gateway)
+  // ROW 1 (Y = 360): 🟨 用户意图输入网关 (User Intent Gateway)
   // ----------------------------------------------------
   {
     id: 'p0',
@@ -58,10 +58,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 650,
-    y: 200,
-    width: 600,
-    height: 140,
+    x: 930,
+    y: 360,
+    width: 680,
+    height: 160,
     iconName: 'UserCheck',
     status: 'completed',
     progress: 100,
@@ -82,7 +82,7 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
   },
 
   // ----------------------------------------------------
-  // ROW 2 (Y = 460): 🟩 控制面编排流水线 (Phase 1 -> 2 -> 3 -> 4)
+  // ROW 2 (Y = 700): 🟩 控制面编排流水线 (Phase 1 -> 2 -> 3 -> 4)
   // ----------------------------------------------------
   {
     id: 'p1',
@@ -95,10 +95,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 80,
-    y: 460,
-    width: 390,
-    height: 145,
+    x: 100,
+    y: 700,
+    width: 480,
+    height: 165,
     iconName: 'Layers',
     status: 'completed',
     progress: 100,
@@ -128,10 +128,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 530,
-    y: 460,
-    width: 390,
-    height: 145,
+    x: 720,
+    y: 700,
+    width: 480,
+    height: 165,
     iconName: 'Sparkles',
     status: 'running',
     progress: 90,
@@ -161,10 +161,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 980,
-    y: 460,
-    width: 390,
-    height: 145,
+    x: 1340,
+    y: 700,
+    width: 480,
+    height: 165,
     iconName: 'FileText',
     status: 'running',
     progress: 80,
@@ -194,10 +194,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 1430,
-    y: 460,
-    width: 390,
-    height: 145,
+    x: 1960,
+    y: 700,
+    width: 480,
+    height: 165,
     iconName: 'GitCommit',
     status: 'completed',
     progress: 100,
@@ -218,7 +218,7 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
   },
 
   // ----------------------------------------------------
-  // ROW 3 (Y = 780): 🟥/🟦 执行闭环流水线 (Phase 5 -> 6 -> 7 -> 8)
+  // ROW 3 (Y = 1140): 🟥/🟦 执行闭环流水线 (Phase 5 -> 6 -> 7 -> 8)
   // ----------------------------------------------------
   {
     id: 'p5',
@@ -231,10 +231,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#FEF2F2',
     strokeColor: '#EF4444',
     textColor: '#991B1B',
-    x: 80,
-    y: 780,
-    width: 390,
-    height: 145,
+    x: 100,
+    y: 1140,
+    width: 480,
+    height: 165,
     iconName: 'Cpu',
     status: 'running',
     progress: 70,
@@ -264,10 +264,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 530,
-    y: 780,
-    width: 390,
-    height: 145,
+    x: 720,
+    y: 1140,
+    width: 480,
+    height: 165,
     iconName: 'Terminal',
     status: 'completed',
     progress: 100,
@@ -297,10 +297,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#FEF2F2',
     strokeColor: '#EF4444',
     textColor: '#991B1B',
-    x: 980,
-    y: 780,
-    width: 390,
-    height: 145,
+    x: 1340,
+    y: 1140,
+    width: 480,
+    height: 165,
     iconName: 'Terminal',
     status: 'running',
     progress: 65,
@@ -330,10 +330,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 1430,
-    y: 780,
-    width: 390,
-    height: 145,
+    x: 1960,
+    y: 1140,
+    width: 480,
+    height: 165,
     iconName: 'Activity',
     status: 'running',
     progress: 75,
@@ -354,7 +354,7 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
   },
 
   // ----------------------------------------------------
-  // ROW 4 (Y = 1100): 🟨 质量评审与验收门禁 (Phase 9)
+  // ROW 4 (Y = 1580): 🟨 质量评审与验收门禁 (Phase 9)
   // ----------------------------------------------------
   {
     id: 'p9',
@@ -367,10 +367,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 650,
-    y: 1100,
-    width: 600,
-    height: 140,
+    x: 930,
+    y: 1580,
+    width: 680,
+    height: 160,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -391,7 +391,7 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
   },
 
   // ----------------------------------------------------
-  // ROW 5 (Y = 1360): 🟪 归档与演化闭环 (Phase 10 -> Phase 11)
+  // ROW 5 (Y = 2020): 🟪 归档与演化闭环 (Phase 10 -> Phase 11)
   // ----------------------------------------------------
   {
     id: 'p10',
@@ -404,10 +404,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#FAF5FF',
     strokeColor: '#A855F7',
     textColor: '#6B21A8',
-    x: 400,
-    y: 1360,
-    width: 480,
-    height: 145,
+    x: 520,
+    y: 2020,
+    width: 600,
+    height: 165,
     iconName: 'FileCheck',
     status: 'completed',
     progress: 100,
@@ -437,10 +437,10 @@ export const ROOT_DIAGRAM_NODES: FlowNode[] = [
     fillColor: '#FAF5FF',
     strokeColor: '#A855F7',
     textColor: '#6B21A8',
-    x: 1020,
-    y: 1360,
-    width: 480,
-    height: 145,
+    x: 1320,
+    y: 2020,
+    width: 600,
+    height: 165,
     iconName: 'Sparkles',
     status: 'completed',
     progress: 100,
@@ -595,17 +595,17 @@ export const ROOT_DIAGRAM_EDGES: FlowEdge[] = [
 
 // ==========================================
 // PHASE 0: HUMAN INTENT INTAKE (人类意图接收阶段)
-// Clean spacious vertical workflow:
-// Step 1 (y=50):   Human User
-// Step 2 (y=200):  0.1 Intent Gateway
-// Step 3 (y=350):  0.2 Intent Classifier
-// Step 4 (y=500):  0.3 Context Retrieval
-// Step 5 (y=650):  0.4 Intent Understanding
-// Step 6 (y=800):  0.5 Requirement Extractor
-// Step 7 (y=950):  0.6 Acceptance Criteria (DoD)
-// Step 8 (y=1100): 0.7 Validation Check Gate (Diamond) | Side (x=1040): 0.8 Clarification Agent
-// Step 9 (y=1260): 0.9 Assemble Intent Object
-// Step 10 (y=1410): 0.10 Handover to PM Agent (Phase 1)
+// Clean spacious vertical workflow (2x expanded spacing):
+// Step 1 (y=60):   Human User
+// Step 2 (y=340):  0.1 Intent Gateway
+// Step 3 (y=620):  0.2 Intent Classifier
+// Step 4 (y=900):  0.3 Context Retrieval
+// Step 5 (y=1180): 0.4 Intent Understanding
+// Step 6 (y=1460): 0.5 Requirement Extractor
+// Step 7 (y=1740): 0.6 Acceptance Criteria (DoD)
+// Step 8 (y=2020): 0.7 Validation Check Gate (Diamond) | Side (x=1280): 0.8 Clarification Agent
+// Step 9 (y=2300): 0.9 Assemble Intent Object
+// Step 10 (y=2580): 0.10 Handover to PM Agent (Phase 1)
 // ==========================================
 export const PHASE0_DETAIL_NODES: FlowNode[] = [
   {
@@ -619,10 +619,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 420,
-    y: 50,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 60,
+    width: 620,
+    height: 110,
     iconName: 'UserCheck',
     status: 'completed',
     progress: 100,
@@ -646,10 +646,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 200,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 340,
+    width: 620,
+    height: 110,
     iconName: 'Activity',
     status: 'completed',
     progress: 100,
@@ -673,10 +673,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FAF5FF',
     strokeColor: '#A855F7',
     textColor: '#6B21A8',
-    x: 420,
-    y: 350,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 620,
+    width: 620,
+    height: 110,
     iconName: 'Sparkles',
     status: 'completed',
     progress: 100,
@@ -700,10 +700,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 500,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 900,
+    width: 620,
+    height: 110,
     iconName: 'FileText',
     status: 'completed',
     progress: 100,
@@ -727,10 +727,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 650,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1180,
+    width: 620,
+    height: 110,
     iconName: 'Sparkles',
     status: 'completed',
     progress: 100,
@@ -754,10 +754,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 800,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1460,
+    width: 620,
+    height: 110,
     iconName: 'Layers',
     status: 'completed',
     progress: 100,
@@ -781,10 +781,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 950,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1740,
+    width: 620,
+    height: 110,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -808,10 +808,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 420,
-    y: 1100,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2020,
+    width: 620,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'completed',
     progress: 100,
@@ -835,10 +835,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 1040,
-    y: 1100,
-    width: 460,
-    height: 100,
+    x: 1280,
+    y: 2020,
+    width: 520,
+    height: 110,
     iconName: 'UserCheck',
     status: 'idle',
     progress: 0,
@@ -862,10 +862,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 1260,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2300,
+    width: 620,
+    height: 110,
     iconName: 'Code',
     status: 'completed',
     progress: 100,
@@ -889,10 +889,10 @@ export const PHASE0_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 1410,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2580,
+    width: 620,
+    height: 110,
     iconName: 'ArrowRight',
     status: 'running',
     progress: 50,
@@ -923,16 +923,16 @@ export const PHASE0_DETAIL_EDGES: FlowEdge[] = [
 
 // ==========================================
 // PHASE 1: TASK INTAKE (任务接入与规范化)
-// Clean spacious vertical workflow:
-// Step 1 (y=50):   1.1 Receive Intent Object
-// Step 2 (y=200):  1.2 Generate Task Identity (Registry)
-// Step 3 (y=350):  1.3 Schema Validation (Diamond) | Side (x=1040): 1.9 Clarification Agent
-// Step 4 (y=500):  1.4 Workspace Scope Binding
-// Step 5 (y=650):  1.5 Deduplication Agent
-// Step 6 (y=800):  1.6 Task Field Normalizer
-// Step 7 (y=950):  1.7 Risk Triage Agent
-// Step 8 (y=1100): 1.8 Context Message Builder
-// Step 9 (y=1250): 1.10 Route to PM Queue (Handover to Phase 2)
+// Clean spacious vertical workflow (2x expanded spacing):
+// Step 1 (y=60):   1.1 Receive Intent Object
+// Step 2 (y=340):  1.2 Generate Task Identity (Registry)
+// Step 3 (y=620):  1.3 Schema Validation (Diamond) | Side (x=1280): 1.9 Clarification Agent
+// Step 4 (y=900):  1.4 Workspace Scope Binding
+// Step 5 (y=1180): 1.5 Deduplication Agent
+// Step 6 (y=1460): 1.6 Task Field Normalizer
+// Step 7 (y=1740): 1.7 Risk Triage Agent
+// Step 8 (y=2020): 1.8 Context Message Builder
+// Step 9 (y=2300): 1.10 Route to PM Queue (Handover to Phase 2)
 // ==========================================
 export const PHASE1_DETAIL_NODES: FlowNode[] = [
   {
@@ -946,10 +946,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 50,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 60,
+    width: 620,
+    height: 110,
     iconName: 'Layers',
     status: 'completed',
     progress: 100,
@@ -973,10 +973,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 200,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 340,
+    width: 620,
+    height: 110,
     iconName: 'Database',
     status: 'completed',
     progress: 100,
@@ -1000,10 +1000,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 420,
-    y: 350,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 620,
+    width: 620,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'completed',
     progress: 100,
@@ -1027,10 +1027,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 1040,
-    y: 350,
-    width: 460,
-    height: 100,
+    x: 1280,
+    y: 620,
+    width: 520,
+    height: 110,
     iconName: 'UserCheck',
     status: 'idle',
     progress: 0,
@@ -1054,10 +1054,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 500,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 900,
+    width: 620,
+    height: 110,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -1081,10 +1081,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FAF5FF',
     strokeColor: '#A855F7',
     textColor: '#6B21A8',
-    x: 420,
-    y: 650,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1180,
+    width: 620,
+    height: 110,
     iconName: 'Sparkles',
     status: 'completed',
     progress: 100,
@@ -1107,10 +1107,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 800,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1460,
+    width: 620,
+    height: 110,
     iconName: 'FileText',
     status: 'completed',
     progress: 100,
@@ -1133,10 +1133,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FEF2F2',
     strokeColor: '#EF4444',
     textColor: '#991B1B',
-    x: 420,
-    y: 950,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1740,
+    width: 620,
+    height: 110,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -1159,10 +1159,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 1100,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2020,
+    width: 620,
+    height: 110,
     iconName: 'Code',
     status: 'completed',
     progress: 100,
@@ -1185,10 +1185,10 @@ export const PHASE1_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 1250,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2300,
+    width: 620,
+    height: 110,
     iconName: 'ArrowRight',
     status: 'running',
     progress: 80,
@@ -1217,16 +1217,16 @@ export const PHASE1_DETAIL_EDGES: FlowEdge[] = [
 
 // ==========================================
 // PHASE 2: PM AGENT INTENT UNDERSTANDING (需求深度理解)
-// Clean spacious vertical workflow:
-// Step 1 (y=50):   2.1 Claim Normalized Task
-// Step 2 (y=200):  2.2 Reconstruct Problem Context
-// Step 3 (y=350):  2.3 Refine Core Goal Model
-// Step 4 (y=500):  2.4 Define Scope Model (In / Out Scope)
-// Step 5 (y=650):  2.5 Extract Constraints & Assumptions
-// Step 6 (y=800):  2.6 Interpret Acceptance Criteria (DoD)
-// Step 7 (y=950):  2.7 Risk Analysis & Dependency Hints
-// Step 8 (y=1100): 2.8 Ambiguity & Conflict Detection (Diamond) | Side (x=1040): 2.9 Clarification Agent
-// Step 9 (y=1260): 2.10 Solidify Task Understanding Model
+// Clean spacious vertical workflow (2x expanded spacing):
+// Step 1 (y=60):   2.1 Claim Normalized Task
+// Step 2 (y=340):  2.2 Reconstruct Problem Context
+// Step 3 (y=620):  2.3 Refine Core Goal Model
+// Step 4 (y=900):  2.4 Define Scope Model (In / Out Scope)
+// Step 5 (y=1180): 2.5 Extract Constraints & Assumptions
+// Step 6 (y=1460): 2.6 Interpret Acceptance Criteria (DoD)
+// Step 7 (y=1740): 2.7 Risk Analysis & Dependency Hints
+// Step 8 (y=2020): 2.8 Ambiguity & Conflict Detection (Diamond) | Side (x=1280): 2.9 Clarification Agent
+// Step 9 (y=2300): 2.10 Solidify Task Understanding Model
 // ==========================================
 export const PHASE2_DETAIL_NODES: FlowNode[] = [
   {
@@ -1240,10 +1240,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 50,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 60,
+    width: 620,
+    height: 110,
     iconName: 'Sparkles',
     status: 'completed',
     progress: 100,
@@ -1267,10 +1267,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 200,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 340,
+    width: 620,
+    height: 110,
     iconName: 'FileText',
     status: 'completed',
     progress: 100,
@@ -1293,10 +1293,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 350,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 620,
+    width: 620,
+    height: 110,
     iconName: 'Sparkles',
     status: 'completed',
     progress: 100,
@@ -1319,10 +1319,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 500,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 900,
+    width: 620,
+    height: 110,
     iconName: 'Layers',
     status: 'completed',
     progress: 100,
@@ -1345,10 +1345,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FAF5FF',
     strokeColor: '#A855F7',
     textColor: '#6B21A8',
-    x: 420,
-    y: 650,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1180,
+    width: 620,
+    height: 110,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -1371,10 +1371,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 800,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1460,
+    width: 620,
+    height: 110,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -1397,10 +1397,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FEF2F2',
     strokeColor: '#EF4444',
     textColor: '#991B1B',
-    x: 420,
-    y: 950,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1740,
+    width: 620,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'completed',
     progress: 100,
@@ -1423,10 +1423,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 420,
-    y: 1100,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2020,
+    width: 620,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'completed',
     progress: 100,
@@ -1450,10 +1450,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 1040,
-    y: 1100,
-    width: 460,
-    height: 100,
+    x: 1280,
+    y: 2020,
+    width: 520,
+    height: 110,
     iconName: 'UserCheck',
     status: 'idle',
     progress: 0,
@@ -1476,10 +1476,10 @@ export const PHASE2_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 1260,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2300,
+    width: 620,
+    height: 110,
     iconName: 'ArrowRight',
     status: 'running',
     progress: 90,
@@ -1508,16 +1508,16 @@ export const PHASE2_DETAIL_EDGES: FlowEdge[] = [
 
 // ==========================================
 // PHASE 3: TASK DECOMPOSITION (任务分级拆解)
-// Clean spacious vertical workflow:
-// Step 1 (y=50):   3.1 Load Understanding Model
-// Step 2 (y=200):  3.2 Select Decomposition Strategy
-// Step 3 (y=350):  3.3 Identify Final Deliverables
-// Step 4 (y=500):  3.4 Generate Candidate Subtasks
-// Step 5 (y=650):  3.5 Define Task Contracts
-// Step 6 (y=800):  3.6 Propagate Parent Constraints & Acceptance
-// Step 7 (y=950):  3.7 Tag Required Capabilities & Skills
-// Step 8 (y=1100): 3.8 & 3.9 Coverage & Granularity Validation (Diamond) | Side (x=1040): Split/Merge Replan
-// Step 9 (y=1260): 3.10 Generate Task Breakdown Package
+// Clean spacious vertical workflow (2x expanded spacing):
+// Step 1 (y=60):   3.1 Load Understanding Model
+// Step 2 (y=340):  3.2 Select Decomposition Strategy
+// Step 3 (y=620):  3.3 Identify Final Deliverables
+// Step 4 (y=900):  3.4 Generate Candidate Subtasks
+// Step 5 (y=1180): 3.5 Define Task Contracts
+// Step 6 (y=1460): 3.6 Propagate Parent Constraints & Acceptance
+// Step 7 (y=1740): 3.7 Tag Required Capabilities & Skills
+// Step 8 (y=2020): 3.8 & 3.9 Coverage & Granularity Validation (Diamond) | Side (x=1280): Split/Merge Replan
+// Step 9 (y=2300): 3.10 Generate Task Breakdown Package
 // ==========================================
 export const PHASE3_DETAIL_NODES: FlowNode[] = [
   {
@@ -1531,10 +1531,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 50,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 60,
+    width: 620,
+    height: 110,
     iconName: 'FileText',
     status: 'completed',
     progress: 100,
@@ -1558,10 +1558,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FAF5FF',
     strokeColor: '#A855F7',
     textColor: '#6B21A8',
-    x: 420,
-    y: 200,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 340,
+    width: 620,
+    height: 110,
     iconName: 'Sparkles',
     status: 'completed',
     progress: 100,
@@ -1584,10 +1584,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 350,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 620,
+    width: 620,
+    height: 110,
     iconName: 'Layers',
     status: 'completed',
     progress: 100,
@@ -1610,10 +1610,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 500,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 900,
+    width: 620,
+    height: 110,
     iconName: 'Code',
     status: 'completed',
     progress: 100,
@@ -1636,10 +1636,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 650,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1180,
+    width: 620,
+    height: 110,
     iconName: 'FileText',
     status: 'completed',
     progress: 100,
@@ -1662,10 +1662,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FAF5FF',
     strokeColor: '#A855F7',
     textColor: '#6B21A8',
-    x: 420,
-    y: 800,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1460,
+    width: 620,
+    height: 110,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -1688,10 +1688,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FEF2F2',
     strokeColor: '#EF4444',
     textColor: '#991B1B',
-    x: 420,
-    y: 950,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1740,
+    width: 620,
+    height: 110,
     iconName: 'Cpu',
     status: 'completed',
     progress: 100,
@@ -1714,10 +1714,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 420,
-    y: 1100,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2020,
+    width: 620,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'completed',
     progress: 100,
@@ -1741,10 +1741,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 1040,
-    y: 1100,
-    width: 460,
-    height: 100,
+    x: 1280,
+    y: 2020,
+    width: 520,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'idle',
     progress: 0,
@@ -1767,10 +1767,10 @@ export const PHASE3_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 1260,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2300,
+    width: 620,
+    height: 110,
     iconName: 'ArrowRight',
     status: 'running',
     progress: 85,
@@ -1799,15 +1799,15 @@ export const PHASE3_DETAIL_EDGES: FlowEdge[] = [
 
 // ==========================================
 // PHASE 4: TASK GRAPH CONSTRUCTION (任务图谱构建)
-// Clean spacious vertical workflow:
-// Step 1 (y=50):   4.1 Import Task Nodes
-// Step 2 (y=200):  4.2 & 4.3 Infer DATA & CONTROL Dependencies
-// Step 3 (y=350):  4.4 Identify Parallel Groups
-// Step 4 (y=500):  4.5 Create Join Gates & Policies
-// Step 5 (y=650):  4.6 & 4.7 Cycle Detection & Reachability (Diamond) | Side (x=1040): 4.9 Graph Repair
-// Step 6 (y=800):  4.8 Calculate Critical Path
-// Step 7 (y=950):  4.10 Solidify Task Graph Version
-// Step 8 (y=1100): Handover to Phase 5
+// Clean spacious vertical workflow (2x expanded spacing):
+// Step 1 (y=60):   4.1 Import Task Nodes
+// Step 2 (y=340):  4.2 & 4.3 Infer DATA & CONTROL Dependencies
+// Step 3 (y=620):  4.4 Identify Parallel Groups
+// Step 4 (y=900):  4.5 Create Join Gates & Policies
+// Step 5 (y=1180): 4.6 & 4.7 Cycle Detection & Reachability (Diamond) | Side (x=1280): 4.9 Graph Repair
+// Step 6 (y=1460): 4.8 Calculate Critical Path
+// Step 7 (y=1740): 4.10 Solidify Task Graph Version
+// Step 8 (y=2020): Handover to Phase 5
 // ==========================================
 export const PHASE4_DETAIL_NODES: FlowNode[] = [
   {
@@ -1821,10 +1821,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 50,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 60,
+    width: 620,
+    height: 110,
     iconName: 'GitCommit',
     status: 'completed',
     progress: 100,
@@ -1848,10 +1848,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 200,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 340,
+    width: 620,
+    height: 110,
     iconName: 'Layers',
     status: 'completed',
     progress: 100,
@@ -1874,10 +1874,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 350,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 620,
+    width: 620,
+    height: 110,
     iconName: 'Cpu',
     status: 'completed',
     progress: 100,
@@ -1900,10 +1900,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 500,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 900,
+    width: 620,
+    height: 110,
     iconName: 'ShieldCheck',
     status: 'completed',
     progress: 100,
@@ -1926,10 +1926,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FFFBEB',
     strokeColor: '#F59E0B',
     textColor: '#92400E',
-    x: 420,
-    y: 650,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1180,
+    width: 620,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'completed',
     progress: 100,
@@ -1953,10 +1953,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#FEF2F2',
     strokeColor: '#EF4444',
     textColor: '#991B1B',
-    x: 1040,
-    y: 650,
-    width: 460,
-    height: 100,
+    x: 1280,
+    y: 1180,
+    width: 520,
+    height: 110,
     iconName: 'AlertCircle',
     status: 'idle',
     progress: 0,
@@ -1979,10 +1979,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#F0FDF4',
     strokeColor: '#22C55E',
     textColor: '#166534',
-    x: 420,
-    y: 800,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1460,
+    width: 620,
+    height: 110,
     iconName: 'Activity',
     status: 'completed',
     progress: 100,
@@ -2005,10 +2005,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 950,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 1740,
+    width: 620,
+    height: 110,
     iconName: 'GitCommit',
     status: 'completed',
     progress: 100,
@@ -2031,10 +2031,10 @@ export const PHASE4_DETAIL_NODES: FlowNode[] = [
     fillColor: '#EFF6FF',
     strokeColor: '#3B82F6',
     textColor: '#1E40AF',
-    x: 420,
-    y: 1100,
-    width: 540,
-    height: 100,
+    x: 380,
+    y: 2020,
+    width: 620,
+    height: 110,
     iconName: 'ArrowRight',
     status: 'running',
     progress: 90,

@@ -22,12 +22,28 @@ export type WorkItemStatus =
   | 'backlog'
   | 'in_triage'
   | 'decomposing'
+  | 'assignment_pending'
   | 'assigned'
+  | 'ready'
+  | 'claimed'
   | 'in_progress'
+  | 'paused'
+  | 'blocked'
+  | 'result_submitted'
   | 'code_review'
+  | 'review_pending'
+  | 'in_review'
   | 'qa_testing'
+  | 'qa_running'
+  | 'changes_requested'
+  | 'acceptance_pending'
   | 'staging'
-  | 'done';
+  | 'done'
+  | 'accepted'
+  | 'ready_for_archive'
+  | 'execution_failed'
+  | 'rejected'
+  | 'cancelled';
 
 export type WorkItemPriority = 'critical' | 'high' | 'medium' | 'low';
 export type WorkItemType = 'epic' | 'feature' | 'task' | 'subtask' | 'bug' | 'qa_gate';
@@ -69,7 +85,7 @@ export interface WorkItemLog {
 }
 
 export interface WorkItem {
-  id: string; // e.g., "WI-101", "EPIC-01"
+  id: string; // e.g., "JULI-3", "WI-101", "EPIC-01"
   title: string;
   description: string;
   type: WorkItemType;
@@ -77,7 +93,15 @@ export interface WorkItem {
   priority: WorkItemPriority;
   storyPoints: number;
   departmentId: DepartmentType;
-  assigneeId: string; // Agent ID or Human ID
+  assigneeId: string; // Agent ID or Human ID or 'unassigned'
+  assigneeName?: string;
+  assigneeAvatar?: string;
+  folderCategory?: string; // e.g. 'multica 系统内核拆解'
+  queueStatusTag?: string; // e.g. '排队中'
+  subtaskIndicator?: string; // e.g. '1245591919'
+  subtaskProgress?: string; // e.g. '1/3'
+  priorityIconType?: 'signal' | 'exclamation' | 'dash' | 'arrow';
+  relativeTime?: string; // e.g. '更新于 3 天前'
   parentId?: string;
   childIds: string[];
   dependsOnIds: string[];
