@@ -1,0 +1,6 @@
+{
+  "name": "AI OS - Software Engineering Multi-Agent Workflow Orchestrator",
+  "description": "Enterprise AI OS workflow orchestration platform modeling complete software engineering lifecycles with multi-agent swarms, Jira-like work items, interactive flowcharts, and nested execution drill-downs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
