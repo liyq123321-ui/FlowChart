@@ -156,18 +156,18 @@ export default function App() {
     } else if (pageId === 'page_phase0_detail') {
       setActivePageId('page_overview_canvas');
       setActiveDiagramId('phase0_detail');
-    } else if (pageId === 'page_pm_detail') {
+    } else if (pageId === 'page_phase1_detail') {
       setActivePageId('page_overview_canvas');
-      setActiveDiagramId('pm_detail');
-    } else if (pageId === 'page_analysis_detail') {
+      setActiveDiagramId('phase1_detail');
+    } else if (pageId === 'page_phase2_detail') {
       setActivePageId('page_overview_canvas');
-      setActiveDiagramId('analysis_detail');
-    } else if (pageId === 'page_decompose_detail') {
+      setActiveDiagramId('phase2_detail');
+    } else if (pageId === 'page_phase3_detail') {
       setActivePageId('page_overview_canvas');
-      setActiveDiagramId('decompose_detail');
-    } else if (pageId === 'page_assign_detail') {
+      setActiveDiagramId('phase3_detail');
+    } else if (pageId === 'page_phase4_detail') {
       setActivePageId('page_overview_canvas');
-      setActiveDiagramId('assign_detail');
+      setActiveDiagramId('phase4_detail');
     } else if (subflowNodeId && ALL_DRAWIO_DIAGRAMS[subflowNodeId]) {
       setActivePageId('page_overview_canvas');
       setActiveDiagramId(subflowNodeId);

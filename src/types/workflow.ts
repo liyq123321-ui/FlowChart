@@ -140,7 +140,7 @@ export interface FlowNode {
   labelZh?: string;
   department: DepartmentType;
   category: 'input' | 'decomposer' | 'dept_hub' | 'agent_exec' | 'gate' | 'deploy' | 'monitor' | 'decision' | 'reference' | 'header' | 'output';
-  shapeType?: 'rectangle' | 'rhombus' | 'reference_box' | 'header' | 'terminal';
+  shapeType?: 'rectangle' | 'rhombus' | 'reference_box' | 'header' | 'terminal' | 'diamond';
   fillColor?: string;
   strokeColor?: string;
   textColor?: string;

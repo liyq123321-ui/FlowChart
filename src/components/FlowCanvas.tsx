@@ -29,7 +29,7 @@ import {
 } from 'lucide-react';
 import { FlowNode, FlowEdge, DrawioDiagramSpec } from '../types/workflow';
 import { ALL_DRAWIO_DIAGRAMS } from '../data/diagramData';
-import { Phase0SpecsDrawer } from './Phase0SpecsDrawer';
+import { UniversalPhaseSpecsDrawer, PhaseIndex } from './UniversalPhaseSpecsDrawer';
 
 interface FlowCanvasProps {
   activeDiagramId: string;
@@ -78,10 +78,27 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
   // Simulation state
   const [isSimulating, setIsSimulating] = useState(false);
 
-  // Phase 0 Specs Drawer Modal & Collapsible banner state
-  const [isPhase0SpecsOpen, setIsPhase0SpecsOpen] = useState(false);
-  const [phase0SpecsTab, setPhase0SpecsTab] = useState<'checklist' | 'statemachine' | 'intent_object'>('checklist');
+  // Universal Phase Specs Drawer Modal state
+  const [isPhaseSpecsOpen, setIsPhaseSpecsOpen] = useState(false);
+  const [activeSpecsPhase, setActiveSpecsPhase] = useState<PhaseIndex>(0);
+  const [phaseSpecsTab, setPhaseSpecsTab] = useState<'checklist' | 'statemachine' | 'artifact'>('checklist');
   const [isSpecsBannerExpanded, setIsSpecsBannerExpanded] = useState(false);
+
+  // Compute active phase number from current active diagram
+  const currentPhaseIndex: PhaseIndex = useMemo(() => {
+    if (activeDiagramId === 'phase1_detail') return 1;
+    if (activeDiagramId === 'phase2_detail') return 2;
+    if (activeDiagramId === 'phase3_detail') return 3;
+    if (activeDiagramId === 'phase4_detail') return 4;
+    if (activeDiagramId === 'phase5_detail') return 5;
+    if (activeDiagramId === 'phase6_detail') return 6;
+    if (activeDiagramId === 'phase7_detail') return 7;
+    if (activeDiagramId === 'phase8_detail') return 8;
+    if (activeDiagramId === 'phase9_detail') return 9;
+    if (activeDiagramId === 'phase10_detail') return 10;
+    if (activeDiagramId === 'phase11_detail') return 11;
+    return 0;
+  }, [activeDiagramId]);
 
   // Reset viewport when diagram changes
   useEffect(() => {
@@ -381,12 +398,19 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
 
   // Available Sub-diagram list for top switcher tabs
   const tabList = [
-    { id: 'root_workflow', titleZh: '🌐 总架构流程图', titleEn: 'Root Architecture', badge: 'Main' },
-    { id: 'phase0_detail', titleZh: '0. 意图接收 (Phase 0)', titleEn: '0. Intent Intake', badge: 'P0' },
-    { id: 'pm_detail', titleZh: '1. 项目经理 Agent', titleEn: '1. PM Agent Detail', badge: 'PM' },
-    { id: 'analysis_detail', titleZh: '2. 需求分析流程', titleEn: '2. Requirement Analysis', badge: 'PRD' },
-    { id: 'decompose_detail', titleZh: '3. 任务拆分引擎', titleEn: '3. Task Decomposer', badge: 'DAG' },
-    { id: 'assign_detail', titleZh: '4. Agent 分配引擎', titleEn: '4. Agent Assignment', badge: 'Match' },
+    { id: 'root_workflow', titleZh: '🌐 总架构 (0~11)', titleEn: 'Root (0-11)', badge: 'Main' },
+    { id: 'phase0_detail', titleZh: '0. 意图接收', titleEn: '0. Intent Intake', badge: 'P0' },
+    { id: 'phase1_detail', titleZh: '1. 任务接入', titleEn: '1. Task Intake', badge: 'P1' },
+    { id: 'phase2_detail', titleZh: '2. 需求理解', titleEn: '2. Understanding', badge: 'P2' },
+    { id: 'phase3_detail', titleZh: '3. 任务拆解', titleEn: '3. Decomposition', badge: 'P3' },
+    { id: 'phase4_detail', titleZh: '4. 图谱构建', titleEn: '4. Task Graph', badge: 'P4' },
+    { id: 'phase5_detail', titleZh: '5. 能力匹配', titleEn: '5. Matching', badge: 'P5' },
+    { id: 'phase6_detail', titleZh: '6. 看板状态机', titleEn: '6. Work Item', badge: 'P6' },
+    { id: 'phase7_detail', titleZh: '7. ReAct执行', titleEn: '7. Execution', badge: 'P7' },
+    { id: 'phase8_detail', titleZh: '8. 状态流转', titleEn: '8. State Flow', badge: 'P8' },
+    { id: 'phase9_detail', titleZh: '9. 评审验收', titleEn: '9. Review & QA', badge: 'P9' },
+    { id: 'phase10_detail', titleZh: '10. 归档学习', titleEn: '10. Archive', badge: 'P10' },
+    { id: 'phase11_detail', titleZh: '11. 自主演进', titleEn: '11. Evolution', badge: 'P11' },
   ];
 
   return (
@@ -430,7 +454,7 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
                   onClick={() => onChangeDiagram(tab.id)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-white text-indigo-700 shadow-xs border border-slate-200/80'
+                      ? 'bg-white text-indigo-700 shadow-xs border border-slate-200/80 font-bold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
                   }`}
                 >
@@ -441,19 +465,20 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
           </div>
         </div>
 
-        {/* Right: Viewport Controls, Auto-Layout, Phase 0 Specs & Simulator */}
+        {/* Right: Viewport Controls, Auto-Layout, Specs Matrix & Simulator */}
         <div className="flex items-center gap-2">
-          {/* Phase 0 Specs Matrix Button */}
+          {/* Universal Specs Matrix Button */}
           <button
             onClick={() => {
-              setPhase0SpecsTab('checklist');
-              setIsPhase0SpecsOpen(true);
+              setActiveSpecsPhase(currentPhaseIndex);
+              setPhaseSpecsTab('checklist');
+              setIsPhaseSpecsOpen(true);
             }}
-            className="px-2.5 py-1.5 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
-            title="查看 Phase 0 工作事项清单与状态机表格 (Specs & State Machine)"
+            className="px-2.5 py-1.5 rounded-xl border border-indigo-300 bg-indigo-50 hover:bg-indigo-100 text-indigo-900 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
+            title={`查看 Phase ${currentPhaseIndex} 工作事项清单与状态机表格 (Specs & State Machine)`}
           >
-            <FileSpreadsheet size={14} className="text-amber-600" />
-            <span className="text-[11px]">Phase 0 矩阵规约</span>
+            <FileSpreadsheet size={14} className="text-indigo-600" />
+            <span className="text-[11px]">Phase {currentPhaseIndex} 矩阵规约</span>
           </button>
 
           {/* Zoom Level & Actions */}
@@ -575,25 +600,25 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
           />
         )}
 
-        {/* Floating Phase 0 Specs & State Machine Collapsible Widget */}
+        {/* Floating Phase Specs & State Machine Collapsible Widget */}
         <div className="absolute top-4 right-4 z-20 flex flex-col items-end">
           {!isSpecsBannerExpanded ? (
             <button
               onClick={() => setIsSpecsBannerExpanded(true)}
-              className="px-3 py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-amber-200 shadow-md text-slate-800 hover:bg-amber-50/80 transition-all flex items-center gap-2 text-xs font-bold"
-              title="展开 Phase 0 工作事项清单与状态机表格"
+              className="px-3 py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-indigo-200 shadow-md text-slate-800 hover:bg-indigo-50/80 transition-all flex items-center gap-2 text-xs font-bold"
+              title={`展开 Phase ${currentPhaseIndex} 工作事项清单与状态机表格`}
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
-              <FileSpreadsheet size={15} className="text-amber-600" />
-              <span>Phase 0 规约与状态机表</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
+              <FileSpreadsheet size={15} className="text-indigo-600" />
+              <span>Phase {currentPhaseIndex} 规约与状态机表</span>
               <ChevronDown size={14} className="text-slate-400" />
             </button>
           ) : (
-            <div className="w-80 bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl shadow-xl p-3.5 animate-in slide-in-from-top-2 duration-200">
+            <div className="w-80 bg-white/95 backdrop-blur-md border border-indigo-200 rounded-2xl shadow-xl p-3.5 animate-in slide-in-from-top-2 duration-200">
               <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-500" />
-                  <span className="text-xs font-bold text-slate-800">Phase 0 规约矩阵速览</span>
+                  <span className="w-2 h-2 rounded-full bg-indigo-500" />
+                  <span className="text-xs font-bold text-slate-800">Phase {currentPhaseIndex} 规约矩阵速览</span>
                 </div>
                 <button
                   onClick={() => setIsSpecsBannerExpanded(false)}
@@ -603,23 +628,25 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
                 </button>
               </div>
               <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed">
-                包含 0.1~0.10 工作项处理清单、Request 生命周期 7 状态机以及 Intent Object JSON 结构。
+                包含 {currentPhaseIndex}.1~{currentPhaseIndex}.10 工作项处理清单、生命周期状态机以及阶段交付产物 JSON 结构。
               </p>
               <div className="grid grid-cols-2 gap-2 mt-3">
                 <button
                   onClick={() => {
-                    setPhase0SpecsTab('checklist');
-                    setIsPhase0SpecsOpen(true);
+                    setActiveSpecsPhase(currentPhaseIndex);
+                    setPhaseSpecsTab('checklist');
+                    setIsPhaseSpecsOpen(true);
                   }}
-                  className="p-2 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 font-bold text-[11px] flex flex-col items-center justify-center gap-1 transition-colors"
+                  className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-900 font-bold text-[11px] flex flex-col items-center justify-center gap-1 transition-colors"
                 >
-                  <FileSpreadsheet size={16} className="text-amber-600" />
+                  <FileSpreadsheet size={16} className="text-indigo-600" />
                   <span>工作事项清单表</span>
                 </button>
                 <button
                   onClick={() => {
-                    setPhase0SpecsTab('statemachine');
-                    setIsPhase0SpecsOpen(true);
+                    setActiveSpecsPhase(currentPhaseIndex);
+                    setPhaseSpecsTab('statemachine');
+                    setIsPhaseSpecsOpen(true);
                   }}
                   className="p-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-900 font-bold text-[11px] flex flex-col items-center justify-center gap-1 transition-colors"
                 >
@@ -629,13 +656,14 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
               </div>
               <button
                 onClick={() => {
-                  setPhase0SpecsTab('intent_object');
-                  setIsPhase0SpecsOpen(true);
+                  setActiveSpecsPhase(currentPhaseIndex);
+                  setPhaseSpecsTab('artifact');
+                  setIsPhaseSpecsOpen(true);
                 }}
                 className="w-full mt-2 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-colors"
               >
                 <Code size={14} className="text-emerald-600" />
-                <span>查看 Intent Object JSON 规范</span>
+                <span>查看阶段交付产物 JSON</span>
               </button>
             </div>
           )}
@@ -771,8 +799,8 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
           {nodes.map(node => {
             const isSelected = activeNodeId === node.id;
             const isDragging = draggingNodeId === node.id;
-            const nodeW = node.width || (node.shapeType === 'rhombus' ? 280 : node.shapeType === 'reference_box' ? 380 : 480);
-            const nodeH = node.height || (node.shapeType === 'rhombus' ? 110 : node.shapeType === 'header' ? 65 : 85);
+            const nodeW = node.width || (node.shapeType === 'rhombus' || node.shapeType === 'diamond' ? 280 : node.shapeType === 'reference_box' ? 380 : 480);
+            const nodeH = node.height || (node.shapeType === 'rhombus' || node.shapeType === 'diamond' ? 110 : node.shapeType === 'header' ? 65 : 85);
 
             // Shape 1: Header Title Node
             if (node.shapeType === 'header') {
@@ -806,7 +834,7 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
             }
 
             // Shape 2: Decision Rhombus / Diamond Node
-            if (node.shapeType === 'rhombus') {
+            if (node.shapeType === 'rhombus' || node.shapeType === 'diamond') {
               return (
                 <div
                   key={node.id}
@@ -1097,34 +1125,56 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
               </div>
             )}
 
-            {/* Phase 0 Quick Specs Table Access */}
-            {(inspectedNode.id === 'human' || inspectedNode.id.startsWith('p0-')) && (
-              <div className="space-y-2 pt-2 border-t border-slate-100">
-                <label className="text-[10px] font-bold text-amber-700 uppercase">Phase 0 规约与生命周期速查</label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => {
-                      setPhase0SpecsTab('checklist');
-                      setIsPhase0SpecsOpen(true);
-                    }}
-                    className="p-2 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-colors"
-                  >
-                    <FileSpreadsheet size={14} className="text-amber-600" />
-                    <span>0.1~0.10 工作清单</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPhase0SpecsTab('statemachine');
-                      setIsPhase0SpecsOpen(true);
-                    }}
-                    className="p-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-900 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-colors"
-                  >
-                    <Activity size={14} className="text-indigo-600" />
-                    <span>生命周期状态机</span>
-                  </button>
+            {/* Phase Quick Specs Table Access for Phase 0 ~ 11 */}
+            {(() => {
+              let nodePhase: PhaseIndex | null = null;
+              if (inspectedNode.id === 'p0' || inspectedNode.id.startsWith('p0-')) nodePhase = 0;
+              else if (inspectedNode.id === 'p1' || inspectedNode.id.startsWith('p1-')) nodePhase = 1;
+              else if (inspectedNode.id === 'p2' || inspectedNode.id.startsWith('p2-')) nodePhase = 2;
+              else if (inspectedNode.id === 'p3' || inspectedNode.id.startsWith('p3-')) nodePhase = 3;
+              else if (inspectedNode.id === 'p4' || inspectedNode.id.startsWith('p4-')) nodePhase = 4;
+              else if (inspectedNode.id === 'p5' || inspectedNode.id.startsWith('p5-')) nodePhase = 5;
+              else if (inspectedNode.id === 'p6' || inspectedNode.id.startsWith('p6-')) nodePhase = 6;
+              else if (inspectedNode.id === 'p7' || inspectedNode.id.startsWith('p7-')) nodePhase = 7;
+              else if (inspectedNode.id === 'p8' || inspectedNode.id.startsWith('p8-')) nodePhase = 8;
+              else if (inspectedNode.id === 'p9' || inspectedNode.id.startsWith('p9-')) nodePhase = 9;
+              else if (inspectedNode.id === 'p10' || inspectedNode.id.startsWith('p10-')) nodePhase = 10;
+              else if (inspectedNode.id === 'p11' || inspectedNode.id.startsWith('p11-')) nodePhase = 11;
+
+              if (nodePhase === null) return null;
+
+              const targetPhase = nodePhase;
+
+              return (
+                <div className="space-y-2 pt-2 border-t border-slate-100">
+                  <label className="text-[10px] font-bold text-indigo-700 uppercase">Phase {targetPhase} 规约与生命周期速查</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => {
+                        setActiveSpecsPhase(targetPhase);
+                        setPhaseSpecsTab('checklist');
+                        setIsPhaseSpecsOpen(true);
+                      }}
+                      className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-900 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <FileSpreadsheet size={14} className="text-indigo-600" />
+                      <span>{targetPhase}.1~{targetPhase}.10 工作清单</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveSpecsPhase(targetPhase);
+                        setPhaseSpecsTab('statemachine');
+                        setIsPhaseSpecsOpen(true);
+                      }}
+                      className="p-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-900 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <Activity size={14} className="text-indigo-600" />
+                      <span>生命周期状态机</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             {inspectedNode.hasSubDiagram && inspectedNode.subDiagramId && (
               <button
@@ -1144,12 +1194,13 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
       )}
 
       {/* =========================================
-          PHASE 0 SPECS & STATE MACHINE MODAL DRAWER
+          UNIVERSAL PHASE SPECS & STATE MACHINE MODAL DRAWER
          ========================================= */}
-      <Phase0SpecsDrawer
-        isOpen={isPhase0SpecsOpen}
-        onClose={() => setIsPhase0SpecsOpen(false)}
-        initialTab={phase0SpecsTab}
+      <UniversalPhaseSpecsDrawer
+        isOpen={isPhaseSpecsOpen}
+        onClose={() => setIsPhaseSpecsOpen(false)}
+        phase={activeSpecsPhase}
+        initialTab={phaseSpecsTab}
       />
     </div>
   );
