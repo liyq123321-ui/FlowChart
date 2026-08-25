@@ -19,7 +19,8 @@ import {
   ExternalLink,
   ShieldCheck,
   GitCommit,
-  ArrowRight
+  ArrowRight,
+  Compass
 } from 'lucide-react';
 import { 
   PHASE_0_CHECKLIST_ITEMS, 
@@ -65,6 +66,7 @@ import {
   PHASE_11_STATE_MACHINE_ITEMS,
   SAMPLE_PHASE_11_ARTIFACT,
 } from '../data/phaseSpecsDataPart2';
+import { GoalRefinementModal } from './GoalRefinementModal';
 
 export type PhaseIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 

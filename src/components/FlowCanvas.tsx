@@ -25,11 +25,13 @@ import {
   Code,
   Table,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Compass
 } from 'lucide-react';
 import { FlowNode, FlowEdge, DrawioDiagramSpec } from '../types/workflow';
 import { ALL_DRAWIO_DIAGRAMS } from '../data/diagramData';
 import { UniversalPhaseSpecsDrawer, PhaseIndex } from './UniversalPhaseSpecsDrawer';
+import { GoalRefinementModal } from './GoalRefinementModal';
 
 interface FlowCanvasProps {
   activeDiagramId: string;
@@ -83,6 +85,9 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
   const [activeSpecsPhase, setActiveSpecsPhase] = useState<PhaseIndex>(0);
   const [phaseSpecsTab, setPhaseSpecsTab] = useState<'checklist' | 'statemachine' | 'artifact'>('checklist');
   const [isSpecsBannerExpanded, setIsSpecsBannerExpanded] = useState(false);
+
+  // Goal Refinement & Request Taxonomy Flowchart Modal state (for Phase 2.3)
+  const [isGoalFlowModalOpen, setIsGoalFlowModalOpen] = useState(false);
 
   // Compute active phase number from current active diagram
   const currentPhaseIndex: PhaseIndex = useMemo(() => {
@@ -1002,8 +1007,8 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
                   </div>
                 )}
 
-                {/* Card Footer: Sub-diagram Drilldown Button or Tag */}
-                <div className="mt-3 pt-2.5 border-t border-black/5 flex items-center justify-between">
+                {/* Card Footer: Sub-diagram Drilldown Button, Goal Flowchart Button or Tag */}
+                <div className="mt-3 pt-2.5 border-t border-black/5 flex items-center justify-between gap-2">
                   {/* Left: Tags */}
                   <div className="flex items-center gap-1 flex-wrap">
                     {node.tags?.slice(0, 2).map((t, idx) => (
@@ -1013,24 +1018,43 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
                     ))}
                   </div>
 
-                  {/* Right: Drilldown Button (CRITICAL FEATURE FOR SUB-DIAGRAMS) */}
-                  {node.hasSubDiagram && node.subDiagramId ? (
-                    <button
-                      onClick={e => {
-                        e.stopPropagation();
-                        onChangeDiagram(node.subDiagramId!);
-                      }}
-                      className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-bold shadow-xs transition-all active:scale-95"
-                    >
-                      <Sparkles size={11} />
-                      <span>查看子流程图</span>
-                      <ArrowRight size={11} />
-                    </button>
-                  ) : (
-                    <span className="text-[9px] text-slate-400 font-mono">
-                      {node.badge || 'Execution Node'}
-                    </span>
-                  )}
+                  {/* Right: Actions */}
+                  <div className="flex items-center gap-1.5">
+                    {/* Special Button for Phase 2.3 Refine Core Goal Flowchart */}
+                    {(node.id === 'p2-goal' || node.hasGoalFlowchartModal || (activeDiagramId === 'phase2_detail' && (node.id === 'p2-goal' || node.labelZh?.includes('2.3')))) && (
+                      <button
+                        onClick={e => {
+                          e.stopPropagation();
+                          setIsGoalFlowModalOpen(true);
+                        }}
+                        className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white text-[10px] font-bold shadow-xs transition-all hover:scale-105 active:scale-95 animate-pulse"
+                        title="点击展开 2.3 需求类型分流与目标推导全景流程图"
+                      >
+                        <Compass size={12} className="text-amber-300" />
+                        <span>查看需求分流流程图</span>
+                        <ArrowRight size={11} />
+                      </button>
+                    )}
+
+                    {/* Drilldown Button (FOR SUB-DIAGRAMS) */}
+                    {node.hasSubDiagram && node.subDiagramId ? (
+                      <button
+                        onClick={e => {
+                          e.stopPropagation();
+                          onChangeDiagram(node.subDiagramId!);
+                        }}
+                        className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-bold shadow-xs transition-all active:scale-95"
+                      >
+                        <Sparkles size={11} />
+                        <span>查看子流程图</span>
+                        <ArrowRight size={11} />
+                      </button>
+                    ) : !node.hasGoalFlowchartModal && node.id !== 'p2-goal' && !node.labelZh?.includes('2.3') ? (
+                      <span className="text-[9px] text-slate-400 font-mono">
+                        {node.badge || 'Execution Node'}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             );
@@ -1176,6 +1200,20 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
               );
             })()}
 
+            {(inspectedNode.id === 'p2-goal' || inspectedNode.hasGoalFlowchartModal || inspectedNode.labelZh?.includes('2.3')) && (
+              <button
+                onClick={() => {
+                  setIsGoalFlowModalOpen(true);
+                  setInspectedNode(null);
+                }}
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold flex items-center justify-center gap-2 shadow-md transition-all hover:scale-[1.02] active:scale-95"
+              >
+                <Compass size={15} className="text-amber-300" />
+                <span>查看需求分类与目标推导全景流程图</span>
+                <ArrowRight size={14} />
+              </button>
+            )}
+
             {inspectedNode.hasSubDiagram && inspectedNode.subDiagramId && (
               <button
                 onClick={() => {
@@ -1201,6 +1239,14 @@ export const FlowCanvas: React.FC<FlowCanvasProps> = ({
         onClose={() => setIsPhaseSpecsOpen(false)}
         phase={activeSpecsPhase}
         initialTab={phaseSpecsTab}
+      />
+
+      {/* =========================================
+          GOAL REFINEMENT & REQUEST TAXONOMY FLOWCHART MODAL (Phase 2.3)
+         ========================================= */}
+      <GoalRefinementModal
+        isOpen={isGoalFlowModalOpen}
+        onClose={() => setIsGoalFlowModalOpen(false)}
       />
     </div>
   );

@@ -184,6 +184,7 @@ export interface FlowNode {
   subWorkflowId?: string;
   hasSubDiagram?: boolean;
   subDiagramId?: string;
+  hasGoalFlowchartModal?: boolean;
   inputs?: string[];
   outputs?: string[];
   tags?: string[];
